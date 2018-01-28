@@ -11,9 +11,10 @@ using System;
 namespace asp.netcoreangular.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180128210652_AddConstraintsAndTableAnnotationToMakeAndModel")]
+    partial class AddConstraintsAndTableAnnotationToMakeAndModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
