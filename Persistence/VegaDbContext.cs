@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace asp.net_core_angular.DomainModels
+using asp.net_core_angular.DomainModels;
+
+namespace asp.net_core_angular.Persistence
 {
     public class VegaDbContext : DbContext
     {

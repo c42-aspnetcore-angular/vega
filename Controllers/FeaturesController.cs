@@ -6,6 +6,7 @@ using AutoMapper;
 
 using asp.net_core_angular.ResourceModels;
 using asp.net_core_angular.DomainModels;
+using asp.net_core_angular.Persistence;
 
 namespace asp.net_core_angular.Controllers
 {
