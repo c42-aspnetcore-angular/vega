@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 using AutoMapper;
 
@@ -22,14 +23,9 @@ namespace asp.net_core_angular.Controllers
         [HttpGet]
         public IEnumerable<Feature> GetAll()
         {
-            var dummyFeatures = new List<FeatureDomain>(
-                new [] {
-                    new FeatureDomain() {Id = 1, Name = "CarPlay"},
-                    new FeatureDomain() {Id = 2, Name = "Android Auto"}
-                }
-            );
+            var features = _dbContext.Features.ToList();
 
-            var mappedResources = _mapper.Map<IEnumerable<FeatureDomain>, IEnumerable<Feature>>(dummyFeatures);
+            var mappedResources = _mapper.Map<IEnumerable<FeatureDomain>, IEnumerable<Feature>>(features);
             return mappedResources;
         }
     }
