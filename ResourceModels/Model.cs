@@ -1,4 +1,4 @@
-namespace asp.net_core_angular.Models
+namespace asp.net_core_angular.ResourceModels
 {
     public class Model
     {

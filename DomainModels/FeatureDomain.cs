@@ -1,6 +1,6 @@
-namespace asp.net_core_angular.Models
+namespace asp.net_core_angular.DomainModels
 {
-    public class Feature
+    public class FeatureDomain
     {
         public int Id { get; set; }
         public string Name { get; set; }

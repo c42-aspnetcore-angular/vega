@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using asp.net_core_angular.Models;
 using Microsoft.AspNetCore.Mvc;
+
+using asp.net_core_angular.ResourceModels;
+using asp.net_core_angular.DomainModels;
 
 namespace asp.net_core_angular.Controllers
 {

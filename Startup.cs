@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using asp.net_core_angular.Models;
+using AutoMapper;
+
+using asp.net_core_angular.DomainModels;
 
 namespace asp.net_core_angular
 {
@@ -25,6 +27,9 @@ namespace asp.net_core_angular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapper.ServiceCollectionExtensions.UseStaticRegistration = false;
+            
+            services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
         }

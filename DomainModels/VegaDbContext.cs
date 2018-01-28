@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace asp.net_core_angular.Models
+namespace asp.net_core_angular.DomainModels
 {
     public class VegaDbContext : DbContext
     {
@@ -8,7 +8,7 @@ namespace asp.net_core_angular.Models
         {            
         }
 
-        public DbSet<Make> Makes { get; set; }
-        public DbSet<Feature> Features { get; set; }
+        public DbSet<MakeDomain> Makes { get; set; }
+        public DbSet<FeatureDomain> Features { get; set; }
     }
 }
