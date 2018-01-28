@@ -8,6 +8,10 @@ namespace asp.net_core_angular.Controllers
     [Route("api/[controller]")]
     public class MakesController : Controller
     {
+        private VegaDbContext _dbContext;
+
+        public MakesController(VegaDbContext dbContext) => _dbContext = dbContext;
+
         [HttpGet]
         public IEnumerable<Make> GetAll()
         {
