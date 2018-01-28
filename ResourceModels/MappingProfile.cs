@@ -10,17 +10,9 @@ namespace asp.net_core_angular.ResourceModels
     {
         public MappingProfile()
         {
-            CreateMap();
-        }
-
-        private void CreateMap()
-        {
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<FeatureDomain, Feature>();
-                cfg.CreateMap<IEnumerable<FeatureDomain>, IEnumerable<Feature>>();
-                cfg.CreateMap<MakeDomain, Make>();
-                cfg.CreateMap<ModelDomain, Model>();
-            });
+            CreateMap<MakeDomain, MakeDomain>();
+            CreateMap<ModelDomain, Model>();
+            CreateMap<FeatureDomain, FeatureDomain>();
         }
     }
 }
