@@ -8,5 +8,6 @@ namespace asp.net_core_angular.ResourceModels
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+        public int MakeId { get; set; }
     }
 }
