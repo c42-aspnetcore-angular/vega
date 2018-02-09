@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
@@ -19,19 +21,26 @@ namespace asp.net_core_angular.Controllers
             this._mapper = mapper;
 
         }
-        public IActionResult Create([FromBody] VehicleResource vehicle)
+
+        [HttpPost]
+        public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
-            try {
-                var vehicleDomain = _mapper.Map<VehicleResource, Vehicle>(vehicle);
-
-                _dbContext.Vehicles.Add(vehicleDomain);
-                _dbContext.SaveChanges();
-
-                return Ok(value: vehicle);
-
-            } catch {
-                return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
+
+            var vehicle = _mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            vehicle.LastUpdate = DateTime.Now;
+
+            _dbContext.Vehicles.Add(vehicle);
+            await _dbContext.SaveChangesAsync();
+
+            var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
+
+            return Ok(value: result);
         }
+
+        
     }
 }
