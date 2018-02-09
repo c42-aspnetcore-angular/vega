@@ -10,9 +10,11 @@ namespace asp.net_core_angular.ResourceModels
     {
         public MappingProfile()
         {
-            CreateMap<MakeDomain, MakeDomain>();
-            CreateMap<ModelDomain, Model>();
-            CreateMap<FeatureDomain, FeatureDomain>();
+            CreateMap<Make, Make>();
+            CreateMap<Model, ModelResource>();
+            CreateMap<Feature, Feature>();
+            CreateMap<Vehicle, VehicleResource>();
+            CreateMap<VehicleResource, Vehicle>();
         }
     }
 }

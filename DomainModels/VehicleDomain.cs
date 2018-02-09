@@ -5,17 +5,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace asp.net_core_angular.DomainModels
 {
     [Table("Vehicles")]
-    public class VehicleDomain
+    public class Vehicle
     {
         public int Id { get; set; }
 
-        public ModelDomain Model {get; set;}
+        public Model Model {get; set;}
 
         public int ModelId { get; set; }
 
+        [Required]
         [StringLength(255)]
         public string ContactName { get; set; }
 
+        [StringLength(255)]
+        public string ContactEmail { get; set; }
+
+        [Required]
         [StringLength(255)]
         public string ContactPhone { get; set; }
 

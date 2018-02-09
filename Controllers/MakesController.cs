@@ -23,11 +23,11 @@ namespace asp.net_core_angular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Make> GetAll()
+        public IEnumerable<MakeResource> GetAll()
         {
             var makes = _dbContext.Makes.Include(m => m.Models).ToList();
 
-            return _mapper.Map<IEnumerable<MakeDomain>, IEnumerable<Make>>(makes);
+            return _mapper.Map<IEnumerable<Make>, IEnumerable<MakeResource>>(makes);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace asp.netcoreangular.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeature", b =>
+            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeatureDomain", b =>
                 {
                     b.Property<int>("VehicleId");
 
@@ -117,7 +117,7 @@ namespace asp.netcoreangular.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeature", b =>
+            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeatureDomain", b =>
                 {
                     b.HasOne("asp.net_core_angular.DomainModels.FeatureDomain", "Feature")
                         .WithMany()

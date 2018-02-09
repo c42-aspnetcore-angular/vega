@@ -22,11 +22,11 @@ namespace asp.net_core_angular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Feature> GetAll()
+        public IEnumerable<FeatureResource> GetAll()
         {
             var features = _dbContext.Features.ToList();
 
-            var mappedResources = _mapper.Map<IEnumerable<FeatureDomain>, IEnumerable<Feature>>(features);
+            var mappedResources = _mapper.Map<IEnumerable<Feature>, IEnumerable<FeatureResource>>(features);
             return mappedResources;
         }
     }

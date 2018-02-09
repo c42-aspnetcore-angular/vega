@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace asp.net_core_angular.DomainModels
 {
     [Table("Features")]
-    public class FeatureDomain
+    public class Feature
     {
         public int Id { get; set; }
         [Required]

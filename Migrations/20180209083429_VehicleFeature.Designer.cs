@@ -11,7 +11,7 @@ using System;
 namespace asp.netcoreangular.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20180209080523_VehicleFeature")]
+    [Migration("20180209083429_VehicleFeature")]
     partial class VehicleFeature
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,7 +89,7 @@ namespace asp.netcoreangular.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeature", b =>
+            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeatureDomain", b =>
                 {
                     b.Property<int>("VehicleId");
 
@@ -118,7 +118,7 @@ namespace asp.netcoreangular.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeature", b =>
+            modelBuilder.Entity("asp.net_core_angular.DomainModels.VehicleFeatureDomain", b =>
                 {
                     b.HasOne("asp.net_core_angular.DomainModels.FeatureDomain", "Feature")
                         .WithMany()
