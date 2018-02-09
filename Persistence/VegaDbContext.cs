@@ -12,5 +12,10 @@ namespace asp.net_core_angular.Persistence
 
         public DbSet<MakeDomain> Makes { get; set; }
         public DbSet<FeatureDomain> Features { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            mb.Entity<VehicleFeature>().HasKey(vf => new { vf.VehicleId, vf.FeatureId});
+        }
     }
 }
