@@ -40,7 +40,14 @@ namespace asp.net_core_angular.Controllers
             _dbContext.Vehicles.Add(vehicle);
             await _dbContext.SaveChangesAsync();
 
-            var result = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
+            vehicle = await _dbContext.Vehicles
+                .Include(v => v.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(v => v.Model)
+                    .ThenInclude(vm => vm.Make)
+                .SingleOrDefaultAsync(v => v.Id == vehicle.Id);
+
+            var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
 
             return Ok(value: result);
         }
@@ -61,7 +68,14 @@ namespace asp.net_core_angular.Controllers
 
             await _dbContext.SaveChangesAsync();
 
-            var result = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
+            vehicle = await _dbContext.Vehicles
+                .Include(v => v.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(v => v.Model)
+                    .ThenInclude(vm => vm.Make)
+                .SingleOrDefaultAsync(v => v.Id == vehicle.Id);
+
+            var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
 
             return Ok(result);
         }
