@@ -83,12 +83,15 @@ namespace asp.net_core_angular.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVehicle(int id)
         {
-            var vehicle = await _dbContext.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
+            var vehicle = await _dbContext.Vehicles
+                            .Include(v => v.Features)
+                            .ThenInclude(vf => vf.Feature)
+                            .SingleOrDefaultAsync(v => v.Id == id);
 
             if (vehicle == null)
                 return NotFound();
 
-            var vehicleResource = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
+            var vehicleResource = _mapper.Map<Vehicle, VehicleResource>(vehicle);
 
             return Ok(vehicleResource);
         }

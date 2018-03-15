@@ -20,6 +20,11 @@ namespace asp.net_core_angular.Mapping
                 .ForMember(vr => vr.Contact, opt =>
                     opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone }))
                 .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));
+            CreateMap<Vehicle, VehicleResource>()
+                .ForMember(vr => vr.Contact, opt =>
+                    opt.MapFrom(v => new ContactResource {Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone }))
+                .ForMember(vr => vr.Features, opt => 
+                    opt.MapFrom(v => v.Features.Select(vf => new FeatureResource { Id = vf.Feature.Id, Name = vf.Feature.Name})));
 
             // API Resource to Domain mapping
             CreateMap<SaveVehicleResource, Vehicle>()
