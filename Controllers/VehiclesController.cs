@@ -7,6 +7,9 @@ using asp.net_core_angular.ResourceModels;
 using asp.net_core_angular.Persistence;
 using asp.net_core_angular.DomainModels;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace asp.net_core_angular.Controllers
 {
@@ -90,5 +93,18 @@ namespace asp.net_core_angular.Controllers
             return Ok(vehicleResource);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetVehiclesAsync()
+        {
+            var vehicles = await _dbContext.Vehicles.Include(v => v.Features).ToListAsync();
+
+            if (vehicles == null)
+                return NotFound();
+
+            var vehicleResources = vehicles.Select(v => _mapper.Map<Vehicle, VehicleResource>(v));
+
+            return Ok(vehicleResources);
+        }
     }
 }
