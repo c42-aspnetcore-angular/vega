@@ -85,7 +85,9 @@ namespace asp.net_core_angular.Controllers
         {
             var vehicle = await _dbContext.Vehicles
                             .Include(v => v.Features)
-                            .ThenInclude(vf => vf.Feature)
+                                .ThenInclude(vf => vf.Feature)
+                            .Include(v => v.Model)
+                                .ThenInclude(vm => vm.Make)
                             .SingleOrDefaultAsync(v => v.Id == id);
 
             if (vehicle == null)

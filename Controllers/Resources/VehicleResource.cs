@@ -11,6 +11,8 @@ namespace asp.net_core_angular.ResourceModels
 
         public ModelResource Model { get; set; }
 
+        public MakeResource Make { get; set; }
+
         public bool IsRegistered { get; set; }
 
         public ContactResource Contact { get; set; }
