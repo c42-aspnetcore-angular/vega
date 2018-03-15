@@ -58,7 +58,12 @@ namespace asp.net_core_angular.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var vehicle = await _dbContext.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
+            var vehicle = await _dbContext.Vehicles
+                .Include(v => v.Features)
+                    .ThenInclude(vf => vf.Feature)
+                .Include(v => v.Model)
+                    .ThenInclude(vm => vm.Make)
+                .SingleOrDefaultAsync(v => v.Id == id);
 
             if (vehicle == null)
                 return NotFound();
@@ -66,14 +71,7 @@ namespace asp.net_core_angular.Controllers
             _mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
-            await _dbContext.SaveChangesAsync();
-
-            vehicle = await _dbContext.Vehicles
-                .Include(v => v.Features)
-                    .ThenInclude(vf => vf.Feature)
-                .Include(v => v.Model)
-                    .ThenInclude(vm => vm.Make)
-                .SingleOrDefaultAsync(v => v.Id == vehicle.Id);
+            await _dbContext.SaveChangesAsync();            
 
             var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
 
