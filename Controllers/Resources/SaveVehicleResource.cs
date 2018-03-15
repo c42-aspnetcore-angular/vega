@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace asp.net_core_angular.ResourceModels
 {
-    public class VehicleResource
+    public class SaveVehicleResource
     {
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace asp.net_core_angular.ResourceModels
 
         public ICollection<int> Features { get; set; }
 
-        public VehicleResource()
+        public SaveVehicleResource()
         {
             this.Features = new Collection<int>();
         }

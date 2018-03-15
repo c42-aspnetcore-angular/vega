@@ -6,7 +6,7 @@ USE vega
 Select * from dbo.Makes;
 Select * from dbo.Features;
 select * from dbo.Vehicles
-select * from dbo.VehicleFeature
+select * from dbo.VehicleFeatures
 
 
 --sp_help 'dbo.Makes'

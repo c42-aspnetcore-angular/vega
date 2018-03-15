@@ -27,26 +27,26 @@ namespace asp.net_core_angular.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
+        public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var vehicle = _mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            var vehicle = _mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
             _dbContext.Vehicles.Add(vehicle);
             await _dbContext.SaveChangesAsync();
 
-            var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
+            var result = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
 
             return Ok(value: result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateVehicle(int id, [FromBody] VehicleResource vehicleResource)
+        public async Task<IActionResult> UpdateVehicle(int id, [FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -56,12 +56,12 @@ namespace asp.net_core_angular.Controllers
             if (vehicle == null)
                 return NotFound();
 
-            _mapper.Map<VehicleResource, Vehicle>(vehicleResource, vehicle);
+            _mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
             await _dbContext.SaveChangesAsync();
 
-            var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
+            var result = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
 
             return Ok(result);
         }
@@ -88,7 +88,7 @@ namespace asp.net_core_angular.Controllers
             if (vehicle == null)
                 return NotFound();
 
-            var vehicleResource = _mapper.Map<Vehicle, VehicleResource>(vehicle);
+            var vehicleResource = _mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
 
             return Ok(vehicleResource);
         }
@@ -102,7 +102,7 @@ namespace asp.net_core_angular.Controllers
             if (vehicles == null)
                 return NotFound();
 
-            var vehicleResources = vehicles.Select(v => _mapper.Map<Vehicle, VehicleResource>(v));
+            var vehicleResources = vehicles.Select(v => _mapper.Map<Vehicle, SaveVehicleResource>(v));
 
             return Ok(vehicleResources);
         }
