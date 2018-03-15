@@ -8,8 +8,6 @@ namespace asp.net_core_angular.ResourceModels
     {
         public int Id { get; set; }
 
-        public ModelResource Model { get; set; }
-
         public int ModelId { get; set; }
 
         public bool IsRegistered { get; set; }
