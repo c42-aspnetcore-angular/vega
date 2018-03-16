@@ -39,7 +39,7 @@ namespace asp.net_core_angular.Controllers
             var vehicle = _mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
-            _dbContext.Vehicles.Add(vehicle);
+            _repository.Add(vehicle);
             await _dbContext.SaveChangesAsync();
 
             vehicle = await _repository.GetVehicle(vehicle.Id);
@@ -73,12 +73,12 @@ namespace asp.net_core_angular.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
-            var vehicle = await _dbContext.Vehicles.FindAsync(id);
+            var vehicle = await _repository.GetVehicle(id, includeRelated:false);
 
             if (vehicle == null)
                 return NotFound();
 
-            _dbContext.Remove(vehicle);
+            _repository.Remove(vehicle);
             await _dbContext.SaveChangesAsync();
 
             return Ok(id);
@@ -101,12 +101,12 @@ namespace asp.net_core_angular.Controllers
         [HttpGet]
         public async Task<IActionResult> GetVehiclesAsync()
         {
-            var vehicles = await _dbContext.Vehicles.Include(v => v.Features).ToListAsync();
+            var vehicles = await _repository.GetAllVehicles();
 
             if (vehicles == null)
                 return NotFound();
 
-            var vehicleResources = vehicles.Select(v => _mapper.Map<Vehicle, SaveVehicleResource>(v));
+            var vehicleResources = vehicles.Select(v => _mapper.Map<Vehicle, VehicleResource>(v));
 
             return Ok(vehicleResources);
         }
