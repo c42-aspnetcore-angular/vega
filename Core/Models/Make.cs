@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace asp.net_core_angular.DomainModels
+namespace asp.net_core_angular.Core.Models
 {
     [Table("Makes")]
     public class Make

@@ -1,15 +1,12 @@
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
 using asp.net_core_angular.Controllers.Resources;
-using asp.net_core_angular.Persistence;
-using asp.net_core_angular.DomainModels;
-using Microsoft.EntityFrameworkCore;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using asp.net_core_angular.Core;
+using asp.net_core_angular.Core.Models;
 
 namespace asp.net_core_angular.Controllers
 {

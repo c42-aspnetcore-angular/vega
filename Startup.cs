@@ -1,20 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
-
 using AutoMapper;
-
-using asp.net_core_angular.DomainModels;
+using asp.net_core_angular.Core;
 using asp.net_core_angular.Persistence;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace asp.net_core_angular
 {

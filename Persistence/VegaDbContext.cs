@@ -1,6 +1,5 @@
+using asp.net_core_angular.Core.Models;
 using Microsoft.EntityFrameworkCore;
-
-using asp.net_core_angular.DomainModels;
 
 namespace asp.net_core_angular.Persistence
 {

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using asp.net_core_angular.DomainModels;
 
-namespace asp.net_core_angular.Persistence
+using asp.net_core_angular.Core.Models;
+
+namespace asp.net_core_angular.Core
 {
     public interface IVehicleRepository
     {

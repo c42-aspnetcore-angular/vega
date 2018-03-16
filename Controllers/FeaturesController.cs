@@ -5,8 +5,8 @@ using System.Linq;
 using AutoMapper;
 
 using asp.net_core_angular.Controllers.Resources;
-using asp.net_core_angular.DomainModels;
 using asp.net_core_angular.Persistence;
+using asp.net_core_angular.Core.Models;
 
 namespace asp.net_core_angular.Controllers
 {
