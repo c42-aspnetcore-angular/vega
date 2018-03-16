@@ -39,6 +39,7 @@ namespace asp.net_core_angular
             services.AddDbContext<VegaDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

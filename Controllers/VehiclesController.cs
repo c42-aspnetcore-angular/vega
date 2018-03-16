@@ -16,14 +16,14 @@ namespace asp.net_core_angular.Controllers
     [Route("api/[controller]")]
     public class VehiclesController : Controller
     {
-        private readonly VegaDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly IVehicleRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public VehiclesController(VegaDbContext dbContext, IVehicleRepository repository, IMapper _mapper)
+        public VehiclesController(IVehicleRepository repository, IUnitOfWork unitOfWork, IMapper _mapper)
         {
+            this._unitOfWork = unitOfWork;
             this._repository = repository;
-            this._dbContext = dbContext;
             this._mapper = _mapper;
 
         }
@@ -40,7 +40,7 @@ namespace asp.net_core_angular.Controllers
             vehicle.LastUpdate = DateTime.Now;
 
             _repository.Add(vehicle);
-            await _dbContext.SaveChangesAsync();
+            await _unitOfWork.Complete();
 
             vehicle = await _repository.GetVehicle(vehicle.Id);
 
@@ -63,7 +63,7 @@ namespace asp.net_core_angular.Controllers
             _mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
-            await _dbContext.SaveChangesAsync();
+            await _unitOfWork.Complete();
 
             var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
 
@@ -73,13 +73,13 @@ namespace asp.net_core_angular.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
-            var vehicle = await _repository.GetVehicle(id, includeRelated:false);
+            var vehicle = await _repository.GetVehicle(id, includeRelated: false);
 
             if (vehicle == null)
                 return NotFound();
 
             _repository.Remove(vehicle);
-            await _dbContext.SaveChangesAsync();
+            await _unitOfWork.Complete();
 
             return Ok(id);
         }
