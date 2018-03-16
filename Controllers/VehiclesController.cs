@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
-using asp.net_core_angular.ResourceModels;
+using asp.net_core_angular.Controllers.Resources;
 using asp.net_core_angular.Persistence;
 using asp.net_core_angular.DomainModels;
 using Microsoft.EntityFrameworkCore;

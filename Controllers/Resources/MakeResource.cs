@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace asp.net_core_angular.ResourceModels
+namespace asp.net_core_angular.Controllers.Resources
 {
     public class MakeResource : KeyValuePairResource
     {

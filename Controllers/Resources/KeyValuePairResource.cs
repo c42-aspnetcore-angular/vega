@@ -1,4 +1,4 @@
-namespace asp.net_core_angular.ResourceModels
+namespace asp.net_core_angular.Controllers.Resources
 {
     public class KeyValuePairResource
     {

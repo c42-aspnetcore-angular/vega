@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-using asp.net_core_angular.ResourceModels;
+using asp.net_core_angular.Controllers.Resources;
 using asp.net_core_angular.DomainModels;
 using asp.net_core_angular.Persistence;
 using Microsoft.EntityFrameworkCore;
