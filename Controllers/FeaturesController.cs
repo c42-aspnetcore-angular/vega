@@ -4,9 +4,9 @@ using System.Linq;
 
 using AutoMapper;
 
-using asp.net_core_angular.ResourceModels;
-using asp.net_core_angular.DomainModels;
+using asp.net_core_angular.Controllers.Resources;
 using asp.net_core_angular.Persistence;
+using asp.net_core_angular.Core.Models;
 
 namespace asp.net_core_angular.Controllers
 {
@@ -22,11 +22,11 @@ namespace asp.net_core_angular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Feature> GetAll()
+        public IEnumerable<KeyValuePairResource> GetAll()
         {
             var features = _dbContext.Features.ToList();
 
-            var mappedResources = _mapper.Map<IEnumerable<FeatureDomain>, IEnumerable<Feature>>(features);
+            var mappedResources = _mapper.Map<IEnumerable<Feature>, IEnumerable<KeyValuePairResource>>(features);
             return mappedResources;
         }
     }

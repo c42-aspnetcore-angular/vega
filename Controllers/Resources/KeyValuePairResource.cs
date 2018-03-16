@@ -1,6 +1,6 @@
-namespace asp.net_core_angular.ResourceModels
+namespace asp.net_core_angular.Controllers.Resources
 {
-    public class Feature
+    public class KeyValuePairResource
     {
         public int Id { get; set; }
         public string Name { get; set; }

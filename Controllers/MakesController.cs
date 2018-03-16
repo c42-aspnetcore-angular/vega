@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-
-using asp.net_core_angular.ResourceModels;
-using asp.net_core_angular.DomainModels;
-using asp.net_core_angular.Persistence;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+
+using asp.net_core_angular.Controllers.Resources;
+using asp.net_core_angular.Persistence;
+using asp.net_core_angular.Core.Models;
 
 namespace asp.net_core_angular.Controllers
 {
@@ -23,11 +23,11 @@ namespace asp.net_core_angular.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Make> GetAll()
+        public IEnumerable<MakeResource> GetAll()
         {
             var makes = _dbContext.Makes.Include(m => m.Models).ToList();
 
-            return _mapper.Map<IEnumerable<MakeDomain>, IEnumerable<Make>>(makes);
+            return _mapper.Map<IEnumerable<Make>, IEnumerable<MakeResource>>(makes);
         }
     }
 }
